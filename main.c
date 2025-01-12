@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
 
-#define LED_PIN 12 // Define o pino GPIO onde o LED está conectado
+#define LED_PIN 11 // Define o pino GPIO onde o LED está conectado
 #define PONTO 200 // Duração de um ponto em ms
 #define TRACO 800 // Duração de um traço em ms
 #define INTERVALO 250 // Intervalo entre letras em ms
