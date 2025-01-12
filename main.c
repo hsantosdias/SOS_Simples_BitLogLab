@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
 
-#define LED_PIN 13 // Define o pino GPIO onde o LED está conectado
+#define LED_PIN 12 // Define o pino GPIO onde o LED está conectado
 #define PONTO 200 // Duração de um ponto em ms
 #define TRACO 800 // Duração de um traço em ms
 #define INTERVALO 250 // Intervalo entre letras em ms
@@ -31,7 +31,11 @@ void transmitirSOS() {
     for (int i = 0; i < 3; i++) {
         blinkLED(TRACO);  // Traço
     }
-
+    sleep_ms(INTERVALO); // Intervalo entre letras
+    for (int i = 0; i < 3; i++) {
+        blinkLED(PONTO);  // Ponto 
+    }
+    sleep_ms(3000);  // Pausa antes de reiniciar o ciclo
 }
 
 int main() {
