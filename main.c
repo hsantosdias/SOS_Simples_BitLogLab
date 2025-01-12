@@ -8,9 +8,9 @@
 #define LED_PIN 13 // Define o pino GPIO onde o LED está conectado
 #define PONTO 200 // Duração de um ponto em ms
 #define TRACO 800 // Duração de um traço em ms
-#define INTERVALO 250 // Intervalo entre letras em ms
+#define INTERVALO_LETRAS 250 // Intervalo entre letras em ms
 #define INTER_PULSO 125 // Intervalo entre pulsos (Espaço) em ms
-#define PAUSA 3000 // Pausa entre ciclos em ms
+#define PAUSA_GERAL 3000 // Pausa entre ciclos em ms
 
 // Função para acender o LED por um determinado tempo
 // Primeira função para acender o LED por um determinado tempo
@@ -31,20 +31,20 @@ void transmitirSOS() {
     for (int i = 0; i < 3; i++) {
         blinkLED(PONTO);  // Ponto
     }
-    sleep_ms(INTERVALO); // Intervalo entre letras
+    sleep_ms(INTERVALO_LETRAS); // Intervalo entre letras
     
     // Transmite o "O"
     for (int i = 0; i < 3; i++) {
         blinkLED(TRACO);  // Traço
     }
-    sleep_ms(INTERVALO); // Intervalo entre letras
+    sleep_ms(INTERVALO_LETRAS); // Intervalo entre letras
 
     // Transmite o "S"
     for (int i = 0; i < 3; i++) {
         blinkLED(PONTO);  // Ponto 
     }
 
-    sleep_ms(PAUSA);  // Pausa antes de reiniciar o ciclo
+    sleep_ms(PAUSA_GERAL);  // Pausa antes de reiniciar o ciclo
 }
 
 int main() {
