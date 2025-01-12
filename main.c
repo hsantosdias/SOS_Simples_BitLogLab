@@ -1,18 +1,43 @@
+//Hugo S. Dias - 12/01/2025
+// Programa para transmitir o sinal SOS em código Morse
+// O LED pisca de acordo com o código Morse para "SOS" - (... --- ...)
+
 #include <stdio.h>
 #include "pico/stdlib.h"
-#include "pico/cyw43_arch.h"
 
-#define led_pin_red 13
-int tempo = 1000;
+#define LED_PIN 13 // Define o pino GPIO onde o LED está conectado
+#define PONTO 200 // Duração de um ponto em ms
+#define TRACO 800 // Duração de um traço em ms
+#define INTERVALO 250 // Intervalo entre letras em ms
+#define INTER_PULSO 125 // Intervalo entre pulsos (Espaço) em ms
+
+
+// Função para acender o LED por um determinado tempo
+void blinkLED(int duration) { // Recebe a duração do pulso em ms
+    gpio_put(LED_PIN, 1);  // Acende o LED
+    sleep_ms(duration);       // Aguarda o tempo especificado
+    gpio_put(LED_PIN, 0); // Apaga o LED
+    sleep_ms(INTER_PULSO);            // Intervalo entre pulsos (GAP)
+}
+
+// Função para transmitir o sinal SOS em código Morse
+void transmitirSOS() {
+
+    // Transmite "SOS" - (... --- ...)
+    for (int i = 0; i < 3; i++) {
+        blinkLED(PONTO);  // Ponto
+    }
+    
+}
 
 int main() {
-    gpio_init(led_pin_red);
-    gpio_set_dir(led_pin_red, GPIO_OUT);
- 
-     while (true) {
-        gpio_put(led_pin_red, true);
-        sleep_ms(tempo);
-        gpio_put(led_pin_red, false);
-        sleep_ms(tempo);
+    stdio_init_all();            // Inicializa a saída padrão (opcional)
+    gpio_init(LED_PIN);          // Configura o pino do LED
+    gpio_set_dir(LED_PIN, GPIO_OUT); // Define o pino como saída
+
+    while (true) {
+        transmitirSOS();           // Chama a função para transmitir o sinal SOS
     }
+
+    return 0;
 }
