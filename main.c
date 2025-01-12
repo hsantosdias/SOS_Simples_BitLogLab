@@ -27,7 +27,11 @@ void transmitirSOS() {
     for (int i = 0; i < 3; i++) {
         blinkLED(PONTO);  // Ponto
     }
-    
+    sleep_ms(INTERVALO); // Intervalo entre letras
+    for (int i = 0; i < 3; i++) {
+        blinkLED(TRACO);  // Traço
+    }
+
 }
 
 int main() {
